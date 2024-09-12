@@ -46,6 +46,7 @@ frontend/**/.env*.local
 frontend/**/tsbuildinfo
 frontend/**/next-env.d.ts
 frontend/**/.vercel
+frontend/.next
 
 # Ignore editor-specific files
 .idea/
