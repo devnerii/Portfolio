@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import HeaderMain from '../components/Header/HeaderMain';
-import HeroHeader from '../components/HeroHeader';
+import HeroHeader from '../components/Hero/HeroHeader';
 
 const Home: NextPage = () => {
   return (
