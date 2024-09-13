@@ -5,7 +5,7 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { Sun, Moon } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-export default function Navbar() {
+export default function HeaderMain() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -24,17 +24,18 @@ export default function Navbar() {
 
   return (
     <>
-      <nav
-        className={`bg-white dark:bg-gray-900 bg-opacity-70 dark:bg-opacity-70 backdrop-blur-lg shadow-md w-full z-50 transition-colors duration-300`}
-      >
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex justify-between items-center py-1.5">
-            {/* Logo e Título */}
-            <div className="flex items-center space-x-7">
-              <div>
+      <header className="absolute top-0 left-0 w-full z-50 bg-transparent">
+        <nav className="w-full transition-colors duration-300 bg-transparent">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center"> {/* Reduzido o padding vertical */}
+              {/* Logo */}
+              <div className="flex items-center space-x-4">
                 <a href="#" className="flex items-center space-x-2">
-                  {/* SVG Logo diretamente no JSX */}
-                  <div className="h-16 w-auto text-[#003366] dark:text-white">
+                  <motion.div
+                    className="h-10 w-auto text-white dark:text-white mb-4"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -44,6 +45,7 @@ export default function Navbar() {
                       preserveAspectRatio="xMidYMid meet"
                       fill="currentColor"
                     >
+                      {/* Código SVG do logo */}
                       <g fill="currentColor" fillOpacity="1">
                         <g transform="translate(142.850781, 267.133319)">
                           <g>
@@ -59,61 +61,80 @@ export default function Navbar() {
                         </g>
                       </g>
                     </svg>
-                  </div>
+                  </motion.div>
                 </a>
               </div>
-            </div>
 
-            {/* Links de Navegação Desktop */}
-            <div className="hidden md:flex items-center space-x-8">
-              {['Home', 'Sobre', 'Serviços', 'Contato'].map((item) => (
-                <a
-                  href={`#${item.toLowerCase()}`}
-                  key={item}
-                  className="text-[#003366] dark:text-gray-300 text-lg font-medium hover:text-blue-500 dark:hover:text-blue-400 transition duration-300"
+              {/* Menu Desktop */}
+              <div className="hidden md:flex items-center space-x-8">
+                {['Home', 'Sobre', 'Serviços', 'Contato'].map((item) => (
+                  <motion.a
+                    href={`#${item.toLowerCase()}`}
+                    key={item}
+                    className="text-lg font-medium text-white dark:text-white hover:text-green-400 transition duration-300 dark:hover:text-blue-400"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {item}
+                  </motion.a>
+                ))}
+              </div>
+
+              {/* Ações */}
+              <div className="flex items-center space-x-4">
+                {/* Modo Escuro/Claro */}
+                <motion.button
+                  onClick={() => setIsDarkMode(!isDarkMode)}
+                  className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.5 }}
                 >
-                  {item}
-                </a>
-              ))}
-            </div>
+                  {isDarkMode ? (
+                    <Sun className="w-6 h-6 text-white" />
+                  ) : (
+                    <Moon className="w-6 h-6 text-white" />
+                  )}
+                </motion.button>
 
-            {/* Modo escuro/claro */}
-            <motion.button
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.5 }}
-            >
-              {isDarkMode ? <Sun className="w-6 h-6 text-white" /> : <Moon className="w-6 h-6 text-gray-800" />}
-            </motion.button>
-
-            {/* Botão de Menu Mobile */}
-            <div className="md:hidden flex items-center">
-              <button className="outline-none mobile-menu-button" onClick={toggleMenu}>
-                {isOpen ? (
-                  <FaTimes className="w-6 h-6 text-[#003366] dark:text-white" />
-                ) : (
-                  <FaBars className="w-6 h-6 text-[#003366] dark:text-white" />
-                )}
-              </button>
+                {/* Botão do Menu Mobile */}
+                <div className="md:hidden">
+                  <motion.button
+                    className="outline-none"
+                    onClick={toggleMenu}
+                    whileHover={{ scale: 1.2 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {isOpen ? (
+                      <FaTimes className="w-6 h-6 text-white dark:text-white" />
+                    ) : (
+                      <FaBars className="w-6 h-6 text-white dark:text-white" />
+                    )}
+                  </motion.button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Menu Mobile */}
-        <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} bg-white dark:bg-gray-800 shadow-lg`}>
-          {['Home', 'Sobre', 'Serviços', 'Contato'].map((item) => (
-            <a
-              href={`#${item.toLowerCase()}`}
-              key={item}
-              className="block py-4 px-6 text-[#003366] dark:text-white hover:bg-blue-500 hover:text-white transition duration-300"
-              onClick={() => setIsOpen(false)}
-            >
-              {item}
-            </a>
-          ))}
-        </div>
-      </nav>
+          {/* Menu Mobile */}
+          <motion.div
+            className={`md:hidden ${isOpen ? 'block' : 'hidden'} bg-white dark:bg-gray-900 transition-all duration-300`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isOpen ? 1 : 0 }}
+          >
+            {['Home', 'Sobre', 'Serviços', 'Contato'].map((item) => (
+              <motion.a
+                href={`#${item.toLowerCase()}`}
+                key={item}
+                className="block py-3 px-6 text-black hover:bg-green-500 dark:text-white dark:hover:bg-blue-700 hover:text-white transition duration-300"
+                whileHover={{ scale: 1.05 }}
+                onClick={() => setIsOpen(false)}
+              >
+                {item}
+              </motion.a>
+            ))}
+          </motion.div>
+        </nav>
+      </header>
     </>
   );
 }

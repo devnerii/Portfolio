@@ -129,3 +129,60 @@
   scrollbar-width: thin;
   scrollbar-color: #007BFF #f1f1f1; /* Cor do polegar e do trilho */
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite; /* Velocidade da animação pode ser ajustada */
+}
+
+
+/* Animação dos Blobs */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+.animation-delay-6000 {
+  animation-delay: 6s;
+}
+
+/* Adicionando efeitos de hover nas Blobs */
+.animate-blob:hover {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+}
+
+/* Sobreposição de Gradiente */
+.absolute.inset-0.bg-gradient-to-t.from-black.via-transparent.to-transparent.opacity-30 {
+  pointer-events: none;
+}
