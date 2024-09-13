@@ -5,6 +5,10 @@
       "dom.iterable",
       "esnext"
     ],
+    "baseUrl": ".", // Define a base URL para resolver caminhos relativos
+    "paths": {
+      "@/*": ["./*"] // Ajuste este caminho conforme a estrutura do seu projeto
+    },
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,

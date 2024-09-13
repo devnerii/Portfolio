@@ -1,0 +1,178 @@
+'use client'
+
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useForm } from 'react-hook-form';
+import { Linkedin, ArrowRight, Check, Github, Instagram, Twitter } from 'lucide-react';
+import Link from 'next/link';
+
+const socialIcons = [
+  { Icon: Linkedin, href: 'https://linkedin.com' },
+  { Icon: Github, href: 'https://github.com' },
+  { Icon: Instagram, href: 'https://instagram.com' },
+  { Icon: Twitter, href: 'https://twitter.com' },
+];
+
+const footerLinks = [
+  // ... (mesmos links fornecidos anteriormente)
+];
+
+const InteractiveLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
+  <Link href={href} className="group relative overflow-hidden">
+    <motion.span
+      className="relative z-10 text-white transition-colors duration-300 group-hover:text-blue-400"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
+      {children}
+    </motion.span>
+    <motion.span
+      className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-blue-400 transition-transform duration-300 group-hover:scale-x-100"
+      initial={{ scaleX: 0 }}
+      animate={{ scaleX: 1 }}
+    />
+  </Link>
+);
+
+const SocialIcon = ({ Icon, href }: { Icon: React.ElementType; href: string }) => (
+  <motion.a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-blue-400 hover:text-white transition-colors duration-300"
+    whileHover={{ scale: 1.3, rotate: 10 }}
+    whileTap={{ scale: 0.9 }}
+  >
+    <Icon size={28} />
+  </motion.a>
+);
+
+export default function Footer() {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const { register, handleSubmit, formState: { errors } } = useForm<{ email: string }>();
+
+  const onSubmit = (data: { email: string }) => {
+    console.log(data);
+    setIsSubmitted(true);
+    setTimeout(() => setIsSubmitted(false), 3000);
+  };
+
+  return (
+    <footer className="bg-[#001F3F] text-white py-16 px-4 sm:px-8 lg:px-12 relative">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        {/* Seção de Informações da Empresa */}
+        <div className="space-y-4">
+          <motion.h2
+            className="text-3xl font-bold font-montserrat"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            Company Name
+          </motion.h2>
+          <motion.p
+            className="text-sm opacity-80 font-open-sans"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            Capacitando a inovação através de soluções tecnológicas de ponta.
+          </motion.p>
+          <motion.div
+            className="flex space-x-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            {socialIcons.map(({ Icon, href }, index) => (
+              <SocialIcon key={index} Icon={Icon} href={href} />
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Seções de Links Rápidos e Recursos */}
+        {['Quick Links', 'Resources'].map((sectionTitle, idx) => (
+          <div className="space-y-4" key={idx}>
+            <h3 className="text-xl font-semibold font-montserrat">{sectionTitle}</h3>
+            <ul className="space-y-3">
+              {footerLinks.slice(idx * 4, idx * 4 + 4).map((link, index) => (
+                <li key={index}>
+                  <InteractiveLink href={link.href}>{link.title}</InteractiveLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+
+        {/* Seção de Inscrição no Newsletter */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold font-montserrat">Inscreva-se em Nossa Newsletter</h3>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
+            <div className="relative">
+              <input
+                type="email"
+                placeholder="Digite seu email"
+                {...register('email', { required: 'Email é obrigatório', pattern: { value: /^\S+@\S+$/i, message: 'Email inválido' } })}
+                className="w-full px-4 py-3 bg-white/10 rounded-full focus:outline-none focus:ring-4 focus:ring-blue-500 transition-all duration-300"
+              />
+              <motion.button
+                type="submit"
+                className="absolute right-1 top-1 bottom-1 px-4 bg-blue-500 text-white rounded-full hover:bg-white hover:text-blue-500 transition-colors duration-300"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <ArrowRight size={24} />
+              </motion.button>
+            </div>
+            {errors.email && (
+              <motion.p className="text-red-400 text-sm" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                {errors.email.message}
+              </motion.p>
+            )}
+            <AnimatePresence>
+              {isSubmitted && (
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="text-green-400 text-sm flex items-center space-x-1"
+                >
+                  <Check size={16} />
+                  <span>Obrigado por se inscrever!</span>
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </form>
+        </div>
+      </div>
+
+      {/* Seção Inferior do Footer */}
+      <motion.div
+        className="mt-16 pt-8 border-t border-white/20 text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+      >
+        <p className="text-sm opacity-60 font-open-sans">
+          © {new Date().getFullYear()} Company Name. Todos os direitos reservados.
+        </p>
+      </motion.div>
+
+      {/* Elemento Decorativo */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-0">
+        <svg
+          className="relative block w-full h-16"
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+            className="fill-[#002244] opacity-20"
+          ></path>
+        </svg>
+      </div>
+    </footer>
+  );
+}
