@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { useTranslation } from "next-i18next";
@@ -67,11 +67,6 @@ export default function TestimonialsSection() {
         : (prevIndex + 1) % testimonials.length
     );
   };
-
-  // SEO: Adicionando meta tags e título dinâmico
-  useEffect(() => {
-    document.title = t("common.testimonialsHeading");
-  }, [t]);
 
   return (
     <>
