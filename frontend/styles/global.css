@@ -124,25 +124,21 @@
   background-color: #003d80; /* Cor do polegar quando clicado */
 }
 
+/* No arquivo CSS global (ex: styles/globals.css) */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}
+
 /* Para Firefox */
 * {
   scrollbar-width: thin;
   scrollbar-color: #007BFF #f1f1f1; /* Cor do polegar e do trilho */
 }
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee {
-  animation: marquee 30s linear infinite; /* Velocidade da animação pode ser ajustada */
-}
-
 
 /* Animação dos Blobs */
 @keyframes blob {
@@ -160,29 +156,17 @@
   }
 }
 
-.animate-blob {
-  animation: blob 7s infinite;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animation-delay-4000 {
-  animation-delay: 4s;
-}
-
-.animation-delay-6000 {
-  animation-delay: 6s;
-}
-
-/* Adicionando efeitos de hover nas Blobs */
-.animate-blob:hover {
-  transform: scale(1.2);
-  transition: transform 0.3s ease;
-}
-
 /* Sobreposição de Gradiente */
 .absolute.inset-0.bg-gradient-to-t.from-black.via-transparent.to-transparent.opacity-30 {
   pointer-events: none;
+}
+
+.image-container img {
+  object-fit: cover;
+}
+
+@media (min-width: 1024px) {
+  .image-container img {
+    object-fit: contain;
+  }
 }

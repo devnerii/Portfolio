@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+import nextI18NextConfig from './next-i18next.config.js'; // Importa o módulo como um todo
+
+
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -16,9 +19,9 @@ const nextConfig = {
       },
     ],
   },
+  i18n: nextI18NextConfig.i18n, // Referência ao `i18n` dentro do módulo importado
   async redirects() {
     return [
-      // Redireciona de danielneri.online para www.danielneri.online
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'danielneri.online' }],

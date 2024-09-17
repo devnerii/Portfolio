@@ -1,0 +1,143 @@
+{
+  "home": "Início",
+  "about": "Sobre",
+  "services": "Serviços",
+  "contact": "Contato",
+  "fullstack_dev": "DEV FULL STACK",
+  "learn_more": "Conheça Mais",
+  "landing_pages": "Criação de Landing Pages",
+  "frontend_apps": "Aplicações Front-End Modernas",
+  "responsive_design": "Design Responsivo",
+  "api_development": "Desenvolvimento de APIs",
+  "database_integration": "Integração com Banco de Dados",
+  "mobile_development": "Desenvolvimento Mobile",
+  "seo_optimization": "Otimização para SEO",
+  "web_systems": "Desenvolvimento de Sistemas Web",
+  "performance_improvement": "Melhoria de Performance",
+  "hero_image_alt": "Daniel Neri",
+  "about_me": "Sobre Mim",
+  "intro_text": "Graduado em Tecnologia da Informação e atualmente cursando Análise e Desenvolvimento de Sistemas. Trabalho com React, Next.js, TailwindCSS e TypeScript, além de estar aprendendo C#. Com inglês avançado e foco em soluções web modernas, transformo ideias em experiências digitais de impacto.",
+  "availability": "Disponível para projetos freelancer e contratação em tempo integral.",
+  "contact_me": "Contate-me",
+  "download_cv": "Baixar CV",
+  "javascript": "JavaScript",
+  "react": "React",
+  "node_js": "Node.js",
+  "typescript": "TypeScript",
+  "web_design": "Web Design",
+  "ux_ui": "UX/UI",
+  "portfolioTitle": "Meus Projetos",
+  "category": "Categoria",
+  "libs": "Bibliotecas",
+  "openDetails": "Abrir detalhes de {{project}}",
+  "visitWebsite": "Visitar o site de {{project}}",
+  "close": "Fechar",
+  "projects": {
+    "skanderCapital": {
+      "title": "Skander Capital",
+      "category": "Desenvolvimento Web",
+      "description": "Criação de um site multilíngue e responsivo para a Skander Capital, focando em soluções globais de investimento. A experiência do usuário e o design intuitivo foram otimizados para representar a Skander como líder no setor financeiro."
+    },
+    "safexBroker": {
+      "title": "Safex Broker",
+      "category": "Desenvolvimento Web",
+      "description": "Desenvolvimento de uma plataforma web segura para negociação de ativos digitais e criptomoedas. Integração com APIs de dados financeiros em tempo real, garantindo uma interface responsiva e acessível."
+    }
+  },
+  "servicesSectionTitle": "Meus Serviços",
+  "myServices": {
+    "webDevelopment": {
+      "title": "Desenvolvimento Web",
+      "description": "Crio sites responsivos e aplicações web de alta performance."
+    },
+    "uiuxDesign": {
+      "title": "Design UI/UX",
+      "description": "Designs intuitivos e atraentes que encantam os usuários."
+    },
+    "mobileDevelopment": {
+      "title": "Desenvolvimento Mobile",
+      "description": "Aplicativos móveis nativos e híbridos para iOS e Android."
+    },
+    "seo": {
+      "title": "SEO",
+      "description": "Otimização para mecanismos de busca para aumentar sua visibilidade online."
+    },
+    "performance": {
+      "title": "Performance",
+      "description": "Otimização de velocidade e desempenho para suas aplicações."
+    },
+    "consulting": {
+      "title": "Consultoria",
+      "description": "Aconselhamento especializado em estratégias digitais e tecnológicas."
+    },
+    "moreInfoButton": "Saiba Mais"
+  },
+  "testimonials": {
+    "paola": {
+      "name": "Paola Martins",
+      "company": "Skander Capital",
+      "quote": "A equipe superou todas as nossas expectativas. O projeto foi entregue antes do prazo e com qualidade excepcional."
+    },
+    "renato": {
+      "name": "Renato Augusto",
+      "company": "Creative Solutions",
+      "quote": "O profissionalismo e a criatividade da equipe transformaram nossa visão em realidade. Estamos extremamente satisfeitos com o resultado."
+    },
+    "jorge": {
+      "name": "Jorge Cavalcante",
+      "company": "Radio Pro",
+      "quote": "A atenção aos detalhes e o suporte pós-projeto foram impressionantes. Recomendo seus serviços sem hesitação."
+    }
+  },
+  "common": {
+    "testimonialsHeading": "Depoimentos"
+  },
+
+  "contact_us": "Entre em Contato",
+  "full_name": "Nome Completo",
+  "your_full_name": "Seu nome completo",
+  "email": "Email",
+  "your_email": "seu@email.com",
+  "phone": "Telefone",
+  "your_phone": "(00) 00000-0000",
+  "message": "Mensagem",
+  "your_message": "Sua mensagem aqui...",
+  "send_message": "Enviar Mensagem",
+  "sending": "Enviando...",
+  "sent_successfully": "Enviado com sucesso!",
+  "contact_info": "Informações de Contato",
+  "name_required": "Nome é obrigatório",
+  "email_required": "Email é obrigatório",
+  "invalid_email": "Email inválido",
+  "phone_required": "Telefone é obrigatório",
+  "invalid_phone": "Telefone inválido",
+  "message_required": "Mensagem é obrigatória",
+  "invalid_email_format": "Formato de email inválido",
+  "missing_at_symbol": "Falta o símbolo @",
+  "name": "Daniel Neri",
+  "tagline": "Desenvolvedor Full Stack & Freelancer",
+  "quickLinks": "Links Rápidos",
+  "newsletter": "Newsletter",
+  "emailPlaceholder": "Digite seu email",
+  "emailRequired": "O email é obrigatório",
+  "emailInvalid": "Endereço de email inválido",
+  "thankYou": "Obrigado por se inscrever!",
+  "companyName": "Daniel Neri",
+  "allRightsReserved": "Todos os direitos reservados",
+  "footer": {
+    "name": "Daniel Neri",
+    "tagline": "Desenvolvedor Full Stack & Freelancer",
+    "quickLinks": "Links Rápidos",
+    "newsletter": "Newsletter",
+    "emailPlaceholder": "Digite seu email",
+    "emailRequired": "Email é obrigatório",
+    "emailInvalid": "Email inválido",
+    "thankYou": "Obrigado por se inscrever!",
+    "companyName": "Daniel Neri",
+    "allRightsReserved": "Todos os direitos reservados",
+    "home": "Início",
+    "about": "Sobre",
+    "services": "Serviços",
+    "contact": "Contato"
+  }
+}
