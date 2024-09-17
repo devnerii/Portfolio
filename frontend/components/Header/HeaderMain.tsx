@@ -59,7 +59,7 @@ export default function HeaderMain() {
   return (
     <>
             <Head>
-        <title>Daniel Neri - Full Stack Developer</title>
+        <title>Daniel Neri</title>
         <meta name="description" content="Daniel Neri é um desenvolvedor Full Stack especializado em criar soluções web robustas e escaláveis." />
         <meta property="og:title" content="Daniel Neri - Full Stack Developer" />
         <meta property="og:description" content="Conheça o portfólio de Daniel Neri, um desenvolvedor Full Stack com experiência em diversas tecnologias." />
