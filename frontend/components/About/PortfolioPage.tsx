@@ -10,9 +10,8 @@ const ImageEmbed: React.FC = () => {
       <Image
         src="/src/img/imagem.jpg"
         alt="Minha Imagem"
-        layout="fill"
-        objectFit="cover"
-        objectPosition="center top" // Move a imagem para cima
+        fill // Substitui layout="fill"
+        style={{ objectFit: "cover", objectPosition: "center top" }} // Substitui objectFit e objectPosition
       />
     </div>
   );
