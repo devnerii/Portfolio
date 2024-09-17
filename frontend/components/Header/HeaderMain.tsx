@@ -10,7 +10,6 @@ import { useRouter } from 'next/router';
 import { FiChevronDown } from 'react-icons/fi';
 import Flag from 'react-world-flags';
 import LogoSVG from './LogoSVG';
-import Head from 'next/head';
 
 export default function HeaderMain() {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,18 +57,6 @@ export default function HeaderMain() {
 
   return (
     <>
-            <Head>
-        <title>Daniel Neri</title>
-        <meta name="description" content="Daniel Neri é um desenvolvedor Full Stack especializado em criar soluções web robustas e escaláveis." />
-        <meta property="og:title" content="Daniel Neri - Full Stack Developer" />
-        <meta property="og:description" content="Conheça o portfólio de Daniel Neri, um desenvolvedor Full Stack com experiência em diversas tecnologias." />
-        <meta property="og:url" content="https://www.danielneri.online/" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Daniel Neri - Full Stack Developer" />
-        <meta name="twitter:description" content="Conheça o portfólio de Daniel Neri, um desenvolvedor Full Stack com experiência em diversas tecnologias." />
-        <link rel="canonical" href="https://www.danielneri.online/" />
-      </Head>
       <header id="home" className="absolute top-0 left-0 w-full z-50 bg-transparent">
         <nav className="w-full bg-transparent" aria-label="Main Navigation">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
