@@ -1,19 +1,19 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
-// Componente principal para o modelo Sketchfab embutido diretamente
-const SketchfabEmbed: React.FC = () => {
+// Componente principal para exibir a imagem
+const ImageEmbed: React.FC = () => {
   return (
-    <div className="sketchfab-embed-wrapper" style={{ width: "100%", height: "600px" }}>
-      <iframe
-        title="𝔈𝔠𝔱𝔬𝔭𝔞𝔯𝔞𝔰𝔦𝔱𝔬𝔦𝔡 [𝐬𝐭𝐚𝐭𝐢𝐜]"
-        frameBorder="0"
-        allowFullScreen
-        allow="autoplay; fullscreen; xr-spatial-tracking"
-        src="https://sketchfab.com/models/504c989cdb9c41c18e6581e965f548bd/embed?ui_infos=0&ui_controls=0s&watermark=0&autostart=0&transparent=1&preload=0&max_lod=1"
-        style={{ width: "100%", height: "100%" }}
-      ></iframe>
+    <div className="image-embed-wrapper" style={{ width: "100%", height: "600px", position: "relative" }}>
+      <Image
+        src="/src/img/imagem.jpg"
+        alt="Minha Imagem"
+        layout="fill"
+        objectFit="cover"
+        objectPosition="center top" // Move a imagem para cima
+      />
     </div>
   );
 };
@@ -50,8 +50,8 @@ const PortfolioPage: React.FC = () => {
     <>
       <SeoMetadata />
       <div className="portfolio-container">
-        {/* Componente de Embed do Sketchfab diretamente */}
-        <SketchfabEmbed />
+        {/* Componente de Embed da Imagem diretamente */}
+        <ImageEmbed />
       </div>
     </>
   );
