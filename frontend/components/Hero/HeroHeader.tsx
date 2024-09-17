@@ -30,8 +30,8 @@ export default function HeroHeader() {
         <Image
           src="/src/img/daniel.png"
           alt="Daniel Neri"
-          layout="fill"
-          objectPosition="top"
+          fill
+          style={{ objectPosition: "top" }}
           quality={100}
           priority
           className="w-full h-full sm:max-w-full md:max-w-full lg:max-w-full xl:max-w-full 2xl:max-w-full"
