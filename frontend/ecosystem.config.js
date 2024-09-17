@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'my-app',
+      name: 'Portoflio',
       script: 'npm',
       args: 'start',
       instances: 'max', // Usa o máximo de instâncias disponíveis (modo cluster)
