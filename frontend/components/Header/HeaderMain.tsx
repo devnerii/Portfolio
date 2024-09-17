@@ -59,7 +59,7 @@ export default function HeaderMain() {
   return (
     <>
       <Head>
-        <title>Meu Site</title>
+        <title>Daniel Neri</title>
         <meta name="description" content="Descrição do meu site para SEO" />
         <meta property="og:title" content="Meu Site" />
         <meta property="og:description" content="Descrição do meu site para SEO" />
