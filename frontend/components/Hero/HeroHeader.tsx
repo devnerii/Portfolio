@@ -25,7 +25,7 @@ export default function HeroHeader() {
   return (
     <>
       <Head>
-        <title>{t("page_title")}</title>
+        <title>Daniel Neri</title>
         <meta name="description" content={t("page_description")} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://www.seusite.com" />

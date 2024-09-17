@@ -93,7 +93,7 @@ export default function Footer() {
   return (
     <>
       <Head>
-        <title>{t('footer.title')}</title>
+        <title>Daniel Neri</title>
         <meta name="description" content={t('footer.description')} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index, follow" />

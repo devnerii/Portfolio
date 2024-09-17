@@ -54,7 +54,7 @@ export default function ServicesSection() {
   return (
     <>
       <Head>
-        <title>{t("servicesSectionTitle", "Serviços de Desenvolvedor Full Stack Freelancer")}</title>
+        <title>Daniel Neri - Serviços Full Stack</title>
         <meta name="description" content="Serviços de desenvolvimento web, design de UI/UX, desenvolvimento mobile, otimização SEO, otimização de performance e consultoria técnica." />
         <meta name="keywords" content="desenvolvimento web, design UI/UX, desenvolvimento mobile, SEO, otimização de performance, consultoria técnica" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

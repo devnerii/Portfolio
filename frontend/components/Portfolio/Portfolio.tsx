@@ -70,7 +70,7 @@ export default function PortfolioGallery() {
   return (
     <>
       <Head>
-        <title>{t('portfolioTitle')}</title>
+        <title>Daniel Neri</title>
         <meta name="description" content="Portfólio de projetos de desenvolvimento web e design." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index, follow" />
