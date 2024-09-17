@@ -4,7 +4,6 @@ import { useState } from "react"; // Importa o hook useState do React para geren
 import { motion } from "framer-motion"; // Importa o motion da biblioteca Framer Motion para animações
 import { Code, Palette, Smartphone, Globe, Zap, Users } from "lucide-react"; // Importa ícones da biblioteca Lucide React
 import { useTranslation } from "next-i18next"; // Importa o hook useTranslation para suporte à internacionalização
-import Head from "next/head"; // Importa o componente Head para manipular o head do documento
 
 export default function ServicesSection() {
   const { t } = useTranslation("common"); // Usa o hook de tradução para pegar as strings definidas no arquivo de tradução
@@ -53,12 +52,6 @@ export default function ServicesSection() {
   // A seção de serviços
   return (
     <>
-      <Head>
-        <title>Daniel Neri - Serviços Full Stack</title>
-        <meta name="description" content="Serviços de desenvolvimento web, design de UI/UX, desenvolvimento mobile, otimização SEO, otimização de performance e consultoria técnica." />
-        <meta name="keywords" content="desenvolvimento web, design UI/UX, desenvolvimento mobile, SEO, otimização de performance, consultoria técnica" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
       <section
         className="py-16 bg-gradient-to-b from-blue-500 via-blue-500 to-blue-300 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-500 relative"
         id="servicos" // ID para referência em links âncora

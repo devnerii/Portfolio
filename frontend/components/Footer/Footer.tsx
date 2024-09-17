@@ -6,7 +6,6 @@ import { useForm } from 'react-hook-form';
 import { Linkedin, ArrowRight, Check, Github, Instagram, Briefcase } from 'lucide-react';
 import { SiFreelancer } from "react-icons/si";
 import { useTranslation } from 'next-i18next';
-import Head from 'next/head';
 
 const socialIcons = [
   { Icon: Linkedin, href: 'https://www.linkedin.com/in/daniel-neri-51a7b12b3', label: 'LinkedIn' },
@@ -92,13 +91,6 @@ export default function Footer() {
 
   return (
     <>
-      <Head>
-        <title>Daniel Neri</title>
-        <meta name="description" content={t('footer.description')} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.seusite.com" />
-      </Head>
       <footer className="bg-gradient-to-t from-blue-800 to-blue-700 text-white dark:from-gray-800 dark:to-gray-900 py-16 px-4 sm:px-8 lg:px-12 relative flex justify-center items-center">
         <div className="max-w-6xl w-full mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 text-center justify-items-center">

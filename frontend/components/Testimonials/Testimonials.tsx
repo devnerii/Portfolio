@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { useTranslation } from "next-i18next";
-import Head from "next/head";
 
 const testimonials = [
   {
@@ -76,12 +75,6 @@ export default function TestimonialsSection() {
 
   return (
     <>
-      <Head>
-        <meta name="description" content={t("common.testimonialsDescription")} />
-        <meta name="keywords" content="testimonials, reviews, feedback" />
-        <meta name="author" content="Your Company Name" />
-        <link rel="canonical" href="https://www.yourwebsite.com/testimonials" />
-      </Head>
       <section
         id="testimonials"
         className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 bg-gradient-to-b from-blue-300 via-blue-300 to-blue-300 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800"

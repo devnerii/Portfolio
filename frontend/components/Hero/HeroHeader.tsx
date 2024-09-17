@@ -6,7 +6,6 @@ import Image from "next/image";
 import { FaArrowDown } from "react-icons/fa";
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
-import Head from "next/head";
 
 // Importando a fonte Montserrat com o peso 700
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["700"] });
@@ -24,20 +23,6 @@ export default function HeroHeader() {
 
   return (
     <>
-      <Head>
-        <title>Daniel Neri</title>
-        <meta name="description" content={t("page_description")} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://www.seusite.com" />
-        <meta property="og:title" content={t("page_title")} />
-        <meta property="og:description" content={t("page_description")} />
-        <meta property="og:url" content="https://www.seusite.com" />
-        <meta property="og:image" content="/src/img/daniel.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={t("page_title")} />
-        <meta name="twitter:description" content={t("page_description")} />
-        <meta name="twitter:image" content="/src/img/daniel.png" />
-      </Head>
       <section
         id="home"
         className="relative w-full min-h-screen flex flex-col bg-gradient-to-b from-blue-500 via-blue-600 to-blue-700 dark:from-gray-800 dark:via-gray-900 dark:to-black overflow-hidden transition-colors duration-300"

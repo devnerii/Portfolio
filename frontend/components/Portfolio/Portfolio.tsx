@@ -9,7 +9,6 @@ import { FaHtml5, FaCss3Alt, FaJs, FaNodeJs } from 'react-icons/fa';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import ParticleBackground from './ParticleBackground'; // Certifique-se de usar o caminho correto
-import Head from 'next/head';
 
 interface Project {
   id: number;
@@ -69,13 +68,6 @@ export default function PortfolioGallery() {
 
   return (
     <>
-      <Head>
-        <title>Daniel Neri</title>
-        <meta name="description" content="Portfólio de projetos de desenvolvimento web e design." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://seusite.com/portfolio" />
-      </Head>
       <section
         className="relative min-h-screen py-20 bg-gradient-to-b from-blue-900 via-blue-700 to-blue-500 dark:from-gray-800 dark:to-gray-900 transition-colors duration-500"
         id="projetos"
