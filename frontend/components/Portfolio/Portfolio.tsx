@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState, useMemo, Dispatch } from 'react';
 import Tilt from 'react-parallax-tilt';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X, Maximize2, ExternalLink } from 'lucide-react';
@@ -9,8 +9,24 @@ import { FaHtml5, FaCss3Alt, FaJs, FaNodeJs } from 'react-icons/fa';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import ParticleBackground from './ParticleBackground'; // Certifique-se de usar o caminho correto
+import Head from 'next/head';
 
-const projects = [
+interface Project {
+  id: number;
+  key: string;
+  image: string;
+  link: string;
+  libraries: { icon: JSX.Element; name: string }[];
+  description: string;
+  category: string;
+}
+
+interface ProjectCardProps {
+  project: Project;
+  setSelectedProject: Dispatch<React.SetStateAction<Project | null>>;
+}
+
+const projects: Project[] = [
   {
     id: 1,
     key: 'skanderCapital',
@@ -42,118 +58,127 @@ const projects = [
 export default function PortfolioGallery() {
   const { t } = useTranslation('common');
   const [selectedCategory, setSelectedCategory] = useState('Todos');
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const filteredProjects =
+  const filteredProjects = useMemo(() => 
     selectedCategory === 'Todos'
       ? projects
       : projects.filter(
           (project) => t(`projects.${project.key}.category`) === selectedCategory
-        );
+        ), [selectedCategory, t]);
 
   return (
-    <section
-      className="relative min-h-screen py-20 bg-gradient-to-b from-blue-900 via-blue-700 to-blue-500 dark:from-gray-800 dark:to-gray-900 transition-colors duration-500"
-      id="projetos"
-    >
-      {/* Partículas de fundo com sombras intensificadas e animação */}
-      <ParticleBackground />
+    <>
+      <Head>
+        <title>{t('portfolioTitle')}</title>
+        <meta name="description" content="Portfólio de projetos de desenvolvimento web e design." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://seusite.com/portfolio" />
+      </Head>
+      <section
+        className="relative min-h-screen py-20 bg-gradient-to-b from-blue-900 via-blue-700 to-blue-500 dark:from-gray-800 dark:to-gray-900 transition-colors duration-500"
+        id="projetos"
+      >
+        {/* Partículas de fundo com sombras intensificadas e animação */}
+        <ParticleBackground />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Título com tipografia forte e gradient text */}
-        <header>
-          <h1
-            id="portfolio-title"
-            className="text-6xl font-extrabold text-center mb-12 font-montserrat bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-white dark:text-blue-200"
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Título com tipografia forte e gradient text */}
+          <header>
+            <h1
+              id="portfolio-title"
+              className="text-6xl font-extrabold text-center mb-12 font-montserrat bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-white dark:text-blue-200"
+            >
+              {t('portfolioTitle')}
+            </h1>
+          </header>
+
+          {/* Categorias com botões elevados e animados, rolagem horizontal oculta em dispositivos móveis */}
+          <nav
+            className="flex justify-center mb-12 space-x-4 overflow-x-auto scrollbar-hide no-scrollbar"
+            aria-label="Project Categories"
           >
-            {t('portfolioTitle')}
-          </h1>
-        </header>
-
-        {/* Categorias com botões elevados e animados, rolagem horizontal oculta em dispositivos móveis */}
-        <nav
-          className="flex justify-center mb-12 space-x-4 overflow-x-auto scrollbar-hide no-scrollbar"
-          aria-label="Project Categories"
-        >
-          {['Todos', 'Web Development', 'Mobile Development', 'UI/UX Design'].map(
-            (category) => (
-              <motion.button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`relative px-6 py-3 rounded-full transition-transform transform hover:scale-105 text-lg font-semibold focus:outline-none shadow-md hover:shadow-xl ${
-                  selectedCategory === category
-                    ? 'bg-white text-[#003366] dark:bg-blue-300 dark:text-gray-900'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
-                }`}
-                aria-label={`View projects for ${t(category)}`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {t(category)}
-              </motion.button>
-            )
-          )}
-        </nav>
-
-        {/* Grid de Projetos com sombras aprimoradas usando Tilt e animações */}
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-full mx-auto"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: {
-                staggerChildren: 0.1,
-              },
-            },
-          }}
-        >
-          <AnimatePresence>
-            {filteredProjects.map((project) => (
-              <Tilt
-                key={project.id}
-                glareEnable={false}
-                scale={1.02}
-                transitionSpeed={250}
-                tiltMaxAngleX={10}
-                tiltMaxAngleY={10}
-                className="rounded-xl"
-              >
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0 },
-                  }}
-                  exit={{ opacity: 0, y: -20 }}
+            {['Todos', 'Web Development', 'Mobile Development', 'UI/UX Design'].map(
+              (category) => (
+                <motion.button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`relative px-6 py-3 rounded-full transition-transform transform hover:scale-105 text-lg font-semibold focus:outline-none shadow-md hover:shadow-xl ${
+                    selectedCategory === category
+                      ? 'bg-white text-[#003366] dark:bg-blue-300 dark:text-gray-900'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
+                  }`}
+                  aria-label={`View projects for ${t(category)}`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <ProjectCard
-                    project={project}
-                    setSelectedProject={setSelectedProject}
-                  />
-                </motion.div>
-              </Tilt>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+                  {t(category)}
+                </motion.button>
+              )
+            )}
+          </nav>
 
-        {/* Modal do Projeto */}
-        <AnimatePresence>
-          {selectedProject && (
-            <Modal
-              project={selectedProject}
-              close={() => setSelectedProject(null)}
-            />
-          )}
-        </AnimatePresence>
-      </div>
-    </section>
+          {/* Grid de Projetos com sombras aprimoradas usando Tilt e animações */}
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-full mx-auto"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  staggerChildren: 0.1,
+                },
+              },
+            }}
+          >
+            <AnimatePresence>
+              {filteredProjects.map((project) => (
+                <Tilt
+                  key={project.id}
+                  glareEnable={false}
+                  scale={1.02}
+                  transitionSpeed={250}
+                  tiltMaxAngleX={10}
+                  tiltMaxAngleY={10}
+                  className="rounded-xl"
+                >
+                  <motion.div
+                    variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: { opacity: 1, y: 0 },
+                    }}
+                    exit={{ opacity: 0, y: -20 }}
+                  >
+                    <ProjectCard
+                      project={project}
+                      setSelectedProject={setSelectedProject}
+                    />
+                  </motion.div>
+                </Tilt>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+
+          {/* Modal do Projeto */}
+          <AnimatePresence>
+            {selectedProject && (
+              <Modal
+                project={selectedProject}
+                close={() => setSelectedProject(null)}
+              />
+            )}
+          </AnimatePresence>
+        </div>
+      </section>
+    </>
   );
 }
 
-function ProjectCard({ project, setSelectedProject }) {
+const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project, setSelectedProject }) => {
   const { t } = useTranslation('common');
 
   return (
@@ -215,9 +240,16 @@ function ProjectCard({ project, setSelectedProject }) {
       </div>
     </div>
   );
+});
+
+ProjectCard.displayName = 'ProjectCard';
+
+interface ModalProps {
+  project: Project;
+  close: () => void;
 }
 
-function Modal({ project, close }) {
+function Modal({ project, close }: ModalProps) {
   const { t } = useTranslation('common');
   return (
     <motion.div
@@ -271,7 +303,7 @@ function Modal({ project, close }) {
                 aria-label={t('visitWebsite', {
                   project: t(`projects.${project.key}.title`),
                 })}
-                whileHover={{                 rotate: 360 }}
+                whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.5 }}
                 style={{
                   boxShadow: '0 15px 45px rgba(0, 0, 0, 0.7)', // Sombras muito mais profundas e escuras
@@ -307,4 +339,3 @@ function Modal({ project, close }) {
     </motion.div>
   );
 }
-               

@@ -4,6 +4,7 @@ import { useState } from "react"; // Importa o hook useState do React para geren
 import { motion } from "framer-motion"; // Importa o motion da biblioteca Framer Motion para animações
 import { Code, Palette, Smartphone, Globe, Zap, Users } from "lucide-react"; // Importa ícones da biblioteca Lucide React
 import { useTranslation } from "next-i18next"; // Importa o hook useTranslation para suporte à internacionalização
+import Head from "next/head"; // Importa o componente Head para manipular o head do documento
 
 export default function ServicesSection() {
   const { t } = useTranslation("common"); // Usa o hook de tradução para pegar as strings definidas no arquivo de tradução
@@ -51,78 +52,86 @@ export default function ServicesSection() {
 
   // A seção de serviços
   return (
-    <section
-      className="py-16 bg-gradient-to-b from-blue-500 via-blue-500 to-blue-300 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-500 relative"
-      id="servicos" // ID para referência em links âncora
-      aria-labelledby="services-heading" // Acessibilidade para associar a seção com o cabeçalho
-    >
-      <div className="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
-        <motion.h1
-          id="services-heading" // ID para acessibilidade
-          className="text-6xl font-extrabold text-center mb-20 font-montserrat bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent dark:text-blue-200"
-          initial={{ opacity: 0, y: -60 }} // Definição do estado inicial da animação
-          animate={{ opacity: 1, y: 0 }} // Estado final da animação
-          transition={{ duration: 0.8 }} // Duração da animação
-        >
-          {t("servicesSectionTitle", "Serviços de Desenvolvedor Full Stack Freelancer")} 
-          {/* Título da seção, com tradução e foco no nicho de desenvolvedor full stack */}
-        </motion.h1>
+    <>
+      <Head>
+        <title>{t("servicesSectionTitle", "Serviços de Desenvolvedor Full Stack Freelancer")}</title>
+        <meta name="description" content="Serviços de desenvolvimento web, design de UI/UX, desenvolvimento mobile, otimização SEO, otimização de performance e consultoria técnica." />
+        <meta name="keywords" content="desenvolvimento web, design UI/UX, desenvolvimento mobile, SEO, otimização de performance, consultoria técnica" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
+      <section
+        className="py-16 bg-gradient-to-b from-blue-500 via-blue-500 to-blue-300 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-500 relative"
+        id="servicos" // ID para referência em links âncora
+        aria-labelledby="services-heading" // Acessibilidade para associar a seção com o cabeçalho
+      >
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
+          <motion.h1
+            id="services-heading" // ID para acessibilidade
+            className="text-6xl font-extrabold text-center mb-20 font-montserrat bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent dark:text-blue-200"
+            initial={{ opacity: 0, y: -60 }} // Definição do estado inicial da animação
+            animate={{ opacity: 1, y: 0 }} // Estado final da animação
+            transition={{ duration: 0.8 }} // Duração da animação
+          >
+            {t("servicesSectionTitle", "Serviços de Desenvolvedor Full Stack Freelancer")} 
+            {/* Título da seção, com tradução e foco no nicho de desenvolvedor full stack */}
+          </motion.h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16">
-          {services.map((service, index) => {
-            const Icon = service.icon; // Referência ao ícone do serviço
-            const isHovered = hoveredIndex === index; // Verifica se o serviço está sendo "hovered"
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16">
+            {services.map((service, index) => {
+              const Icon = service.icon; // Referência ao ícone do serviço
+              const isHovered = hoveredIndex === index; // Verifica se o serviço está sendo "hovered"
 
-            return (
-              <motion.article
-                key={service.title} // Chave única para cada item da lista de serviços
-                className="relative bg-white/30 backdrop-blur-lg dark:bg-gray-700 rounded-3xl shadow-2xl overflow-hidden transform transition-transform duration-700 hover:scale-105"
-                initial={{ opacity: 0, y: 60 }} // Animação inicial
-                animate={{ opacity: 1, y: 0 }} // Animação quando estiver visível
-                transition={{ duration: 0.8, delay: index * 0.2 }} // Transição com atraso baseado no índice
-                onMouseEnter={() => setHoveredIndex(index)} // Define o índice do item "hovered"
-                onMouseLeave={() => setHoveredIndex(null)} // Reseta o "hover"
-                whileHover={{ scale: 1.05 }} // Animação ao passar o mouse
-                role="article" // Melhora a acessibilidade
-                aria-label={service.title} // Melhora a acessibilidade ao descrever o serviço
-                itemScope
-                itemType="http://schema.org/Service" // Marca semântica para SEO
-              >
-                <meta itemProp="keywords" content={service.keywords} /> {/* Palavras-chave para SEO */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-r from-[#003366] to-blue-500 dark:from-gray-800 dark:to-gray-900 opacity-0 ${
-                    isHovered ? "opacity-25" : ""
-                  } transition-opacity duration-700 blur-lg`}
-                ></div>
+              return (
+                <motion.article
+                  key={service.title} // Chave única para cada item da lista de serviços
+                  className="relative bg-white/30 backdrop-blur-lg dark:bg-gray-700 rounded-3xl shadow-2xl overflow-hidden transform transition-transform duration-700 hover:scale-105"
+                  initial={{ opacity: 0, y: 60 }} // Animação inicial
+                  animate={{ opacity: 1, y: 0 }} // Animação quando estiver visível
+                  transition={{ duration: 0.8, delay: index * 0.2 }} // Transição com atraso baseado no índice
+                  onMouseEnter={() => setHoveredIndex(index)} // Define o índice do item "hovered"
+                  onMouseLeave={() => setHoveredIndex(null)} // Reseta o "hover"
+                  whileHover={{ scale: 1.05 }} // Animação ao passar o mouse
+                  role="article" // Melhora a acessibilidade
+                  aria-label={service.title} // Melhora a acessibilidade ao descrever o serviço
+                  itemScope
+                  itemType="http://schema.org/Service" // Marca semântica para SEO
+                >
+                  <meta itemProp="keywords" content={service.keywords} /> {/* Palavras-chave para SEO */}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-r from-[#003366] to-blue-500 dark:from-gray-800 dark:to-gray-900 opacity-0 ${
+                      isHovered ? "opacity-25" : ""
+                    } transition-opacity duration-700 blur-lg`}
+                  ></div>
 
-                <div className="p-10 flex flex-col items-center">
-                  <div className="w-24 h-24 mb-8 flex items-center justify-center bg-white/50 dark:bg-gray-600 rounded-full shadow-inner transform transition-transform duration-700 hover:rotate-12">
-                    <Icon
-                      className={`w-12 h-12 text-[#003366] dark:text-blue-200 ${
-                        isHovered ? "animate-pulse" : ""
-                      }`} // Efeito de animação pulsante ao passar o mouse
-                      aria-hidden="true" // Indica que o ícone é apenas decorativo
-                    />
+                  <div className="p-10 flex flex-col items-center">
+                    <div className="w-24 h-24 mb-8 flex items-center justify-center bg-white/50 dark:bg-gray-600 rounded-full shadow-inner transform transition-transform duration-700 hover:rotate-12">
+                      <Icon
+                        className={`w-12 h-12 text-[#003366] dark:text-blue-200 ${
+                          isHovered ? "animate-pulse" : ""
+                        }`} // Efeito de animação pulsante ao passar o mouse
+                        aria-hidden="true" // Indica que o ícone é apenas decorativo
+                      />
+                    </div>
+
+                    <h2
+                      className="text-4xl font-semibold text-center mb-4 text-[#003366] dark:text-blue-200"
+                      itemProp="name" // Marca semântica para SEO
+                    >
+                      {service.title}
+                    </h2>
+                    <p
+                      className="text-gray-700 dark:text-gray-300 text-center font-light mb-6"
+                      itemProp="description" // Marca semântica para SEO
+                    >
+                      {service.description}
+                    </p>
                   </div>
-
-                  <h2
-                    className="text-4xl font-semibold text-center mb-4 text-[#003366] dark:text-blue-200"
-                    itemProp="name" // Marca semântica para SEO
-                  >
-                    {service.title}
-                  </h2>
-                  <p
-                    className="text-gray-700 dark:text-gray-300 text-center font-light mb-6"
-                    itemProp="description" // Marca semântica para SEO
-                  >
-                    {service.description}
-                  </p>
-                </div>
-              </motion.article>
-            );
-          })}
+                </motion.article>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
